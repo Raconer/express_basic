@@ -16,3 +16,6 @@ pnpm-degub.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Env File
+.env
