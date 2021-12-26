@@ -1,17 +1,23 @@
-const mysql = require('mysql');
-const config = require('./db_config');
-let pool = mysql.createPool(config);
+// const mysql = require('mysql');
+// require('dotenv').config();
 
-function getConnection(callback) {
-  pool.getConnection(function (err, conn) {
-    console.log("Start Connection Pool")
-    if(!err) {
-      callback(conn);
-    }else{
-      console.log("Connection Error");
-      console.log(err);
-    }
-  });
-}
+// let pool = mysql.createPool({
+//   host: process.env.DB_HOST,
+//   port: process.env.DB_PORT,
+//   user: process.env.DB_USER,
+//   password: process.env.DB_PW,
+//   database: process.env.DB_TABLE,
+//   connectionLimit: process.env.DB_CONNECTION_LIMIT
+// });
 
-module.exports = getConnection;
+// function getConnection(callback) {
+//   pool.getConnection(function (err, conn) {
+//     if(!err) {
+//       callback(conn);
+//     }else{
+//       console.log(err);
+//     }
+//   });
+// }
+
+// module.exports = getConnection;

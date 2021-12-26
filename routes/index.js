@@ -1,25 +1,15 @@
-var express = require('express');
-var router = express.Router();
-const getConnection = require('../db/db');
+let express = require('express');
+let router = express.Router();
+let AuthService = require("../service/auth/index");
 
-require('dotenv').config();
-
-
+let authService = new AuthService();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log("Start Get");
-
-  getConnection((conn) => {
-    console.log("Start Query");
-    conn.query(
-      "insert into `info`(`data`) values('data')"
-    );
-    console.log("End Query");
-    conn.release();
+  authService.selectList((data) =>{
+    res.json(JSON.stringify(data));
   });
-
-  res.json({ title: process.env.host });
 });
 
 module.exports = router;
