@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "pm2 start ./bin/www",
-    "restart": "pm2 restart ./bin/www"
+    "dev": "pm2 start --exec babel-node src/bin/www.js",
+    "build": "NODE_ENV=production babel src --out-dir dist --copy-files",
+    "start": "pm2 start ecosystem.config.js"
   },
   "dependencies": {
+    "@babel/register": "^7.16.8",
+    "@babel/runtime": "^7.16.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
@@ -20,5 +23,13 @@
   "main": "app.js",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.7",
+    "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.16.8",
+    "@babel/preset-env": "^7.16.8",
+    "babel-plugin-transform-remove-console": "^6.9.4"
+  }
 }
