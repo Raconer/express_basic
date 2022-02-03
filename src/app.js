@@ -3,9 +3,14 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
+import log from '../logger/index';
 import routes from "./routes";
 
 const app = express();
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -18,12 +23,13 @@ app.use("/", routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  log.info("Handler")
   next(createError(404));
 });
 
 // All handler
 app.use(function(req, res, next) {
-  console.log("All Handler");
+  
   next();
 });
 // error handler

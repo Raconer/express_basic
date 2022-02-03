@@ -1,12 +1,19 @@
 import express from 'express';
+import logger from "../../logger/index";
+import main from "./main";
+import temp from "./temp";
+import temp2 from "./temp2";
+
 const router = express.Router();
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  console.log("Start Get");
-  res.send('respond with a resource');
-
+router.all(["/main","/temp"],  function(req, res, next){
+    logger.info("Test Handler")
+    next();
 });
+
+router.use("/temp", temp);
+router.use("/main", main);
+router.use("/auth", temp2);
 
 export default router;
