@@ -1,2 +1,2 @@
-import '@babel/register';
-import './src/bin/www.js';
+require('@babel/register');
+require('./src/bin/www.js');
